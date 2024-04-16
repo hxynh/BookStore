@@ -60,7 +60,7 @@ function BookForm({closeModal, book}: formProp) {
         Description:
         <textarea name="description" className="textarea textarea-bordered h-24" placeholder="Description" value={values.description} onChange={handleEdit}/>
     </label>
-    <button className="btn mt-3">continue</button>
+    <button className="btn mt-3 bg-primary float-end hover:bg-secondary">{!book ? 'add' : 'update'} book</button>
 </form>
   )
 }

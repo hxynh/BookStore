@@ -33,7 +33,7 @@ function NavBar() {
         <div className="navbar bg-primary">
         
         <div className="navbar-start">
-            <a className="btn btn-ghost text-xl uppercase">book<strong>s</strong>tore</a>
+            <a className="text-xl uppercase mx-2 ">book<strong>s</strong>tore</a>
         </div>
         <div className="navbar-end">
             <button className="btn btn-ghost px-2"
@@ -51,7 +51,7 @@ function NavBar() {
         </div>
     </div>
     <Modal isOpen={modalIsOpen} onClose={onCloseModal}>
-        <h2>Add New Book</h2>
+        <h2 className="text-2xl mx-auto my-5 max-w-fit font-bold font-sans">Add New Book</h2>
         <BookForm closeModal={onCloseModal}  />
     </Modal>
 

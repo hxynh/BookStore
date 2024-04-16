@@ -47,7 +47,7 @@ function BookCard(props: IBook) {
         </div>
     </div>
     <Modal isOpen={openEditModal} onClose={closeModal}>
-    <h2>Add New Book</h2>
+    <h2 className="text-3xl mx-auto my-5 max-w-fit font-bold font-sans">Update <i>{props.book.name}</i> book</h2>
     <BookForm closeModal={closeModal} book={props.book}/>
   </Modal>
   </>
