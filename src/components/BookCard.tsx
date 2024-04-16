@@ -8,6 +8,10 @@ type IBook = {
   book: Book;
 }
 function BookCard(props: IBook) {
+  const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  });
   const dispatch = useAppDispatch()
   const [openEditModal, setOpenEditModal] = useState<boolean>(false)
 
@@ -40,7 +44,7 @@ function BookCard(props: IBook) {
           <div className="items-center p-5">
               <h2 className="card-title justify-center pb-2">{props.book.name}</h2>
               <p>{props.book.category}</p>
-              <p>{props.book.price}</p>
+              <p>{formatter.format(props.book.price)}</p>
           </div>
         </div>
     </div>

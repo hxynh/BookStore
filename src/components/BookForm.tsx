@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../app/store";
 import { Book, addBook, editBook } from "../features/booksSlice";
 import { useState } from "react";
-
+import {v4 as uuidv4} from 'uuid';
 
 type formProp = {
     closeModal: () => void,
@@ -26,7 +26,7 @@ function BookForm({closeModal, book}: formProp) {
             const data = (Object.fromEntries(formData.entries()))
             const {name, category, price, img, description} = data
             const book: Book = {
-                id: '002',
+                id: uuidv4(),
                 name: name.toString(),
                 category: category.toString(),
                 price: Number(price),
