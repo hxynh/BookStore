@@ -24,7 +24,7 @@ function NavBar() {
             dispatch(logout())
 
         }else {
-            dispatch(login("nancy"))
+            dispatch(login("Nancy"))
         }
     }
 

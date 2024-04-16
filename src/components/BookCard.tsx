@@ -38,9 +38,7 @@ function BookCard(props: IBook) {
          </button>
         </div>
         <div className="hover:cursor-pointer" onClick={openModal}>
-          <figure className="mx-auto h-40 w-40" >
-              <img src={props.book.img === "" ? "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png" : props.book.img } alt="Shoes" className="rounded-xl max-h-full object-fill" />
-          </figure>
+              <img src={props.book.img === "" ? "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png" : props.book.img } alt="Shoes" className="rounded-xl mx-auto h-40 w-30" />
           <div className="items-center p-5">
               <h2 className="card-title justify-center pb-2">{props.book.name}</h2>
               <p>{props.book.category}</p>
