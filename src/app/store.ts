@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import booksReducer from "../features/booksSlice";
+import userReducer from "../features/userSlice"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
     reducer: {
+        user: userReducer,
         books: booksReducer
     }
 })
