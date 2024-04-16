@@ -1,12 +1,49 @@
+import { useState } from "react"
+import Modal from "../layout/Modal";
+import { useAppDispatch } from "../app/store";
+import { Book, addBook } from "../features/booksSlice";
+
 function NavBar() {
+    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
+
+    const onOpenModal = () => {
+        setModalIsOpen(true);
+    }
+
+    const onCloseModal = () => {
+        setModalIsOpen(false);
+    }
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget)
+        const data = (Object.fromEntries(formData.entries()))
+        const {name, category, price, img, description} = data
+        const book: Book = {
+            id: '002',
+            name: name.toString(),
+            category: category.toString(),
+            price: Number(price),
+            img: img.toString(),
+            description: description.toString()
+        }
+        console.log("Data: ", data.name)
+        dispatch(addBook(book))
+        onCloseModal()
+    }
+
   return (
+    <>
         <div className="navbar bg-primary">
         
         <div className="navbar-start">
             <a className="btn btn-ghost text-xl uppercase">book<strong>s</strong>tore</a>
         </div>
         <div className="navbar-end">
-            <button className="btn btn-ghost">
+            <button className="btn btn-ghost"
+                onClick={onOpenModal}
+            >
                 <svg className='h-6 w-6' viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Add-Stroke</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Add-Stroke"> <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect> <circle id="Oval" stroke="#0C0310" stroke-width="2" stroke-linecap="round" cx="12" cy="12" r="9"> </circle> <line x1="12" y1="9" x2="12" y2="15" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> <line x1="9" y1="12" x2="15" y2="12" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"> </line> </g> </g> </g></svg>
                     Add Book
             </button>
@@ -19,6 +56,35 @@ function NavBar() {
             </button>
         </div>
     </div>
+    <Modal isOpen={modalIsOpen} onClose={onCloseModal}>
+        <h2>Add New Book</h2>
+        <form onSubmit={handleSubmit} className="mt-6">
+            <label className="input input-bordered flex items-center gap-2 mb-4">
+            *Name:
+                <input name="name" type="text" className="grow" placeholder="Name" required />
+            </label>
+            <label className="input input-bordered flex items-center gap-2 mb-4">
+            *Category:
+                <input name="category" type="text" className="grow" placeholder="Category" 
+                required/>
+            </label>
+            <label className="input input-bordered flex items-center gap-2 mb-4">
+            *Price:
+                <input name="price" type="text" className="grow" placeholder="Price" required />
+            </label>
+            <label className="input input-bordered flex items-center gap-2 mb-4">
+            Image:
+                <input name="img" type="text" className="grow" placeholder="Image URL" />
+            </label>
+            <label className="form-control">
+                Description:
+                <textarea name="description" className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+            </label>
+            <button className="btn mt-3">continue</button>
+        </form>
+    </Modal>
+
+    </>
   )
 }
 
