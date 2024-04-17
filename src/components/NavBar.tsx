@@ -3,21 +3,19 @@ import Modal from "../layout/Modal";
 import BookForm from "./BookForm";
 import { useAppDispatch, useAppSelector } from "../app/store";
 import { login, logout } from "../features/userSlice";
-// import { useAppDispatch } from "../app/store";
-// import { Book, addBook } from "../features/booksSlice";
 
 function NavBar() {
-    const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+    const [openAddModal, setOpenAddModal] = useState<boolean>(false);
     const loginStatus = useAppSelector(state => state.user.loggedIn)
     const [username, setUsername] = useState<string>("");
     const dispatch = useAppDispatch()
 
-    const onOpenModal = () => {
-        setModalIsOpen(true);
+    const openModal = () => {
+        setOpenAddModal(true);
     }
 
-    const onCloseModal = () => {
-        setModalIsOpen(false);
+    const closeModal = () => {
+        setOpenAddModal(false);
     }
 
     const handleName = (event : React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +41,7 @@ function NavBar() {
         </div>
         <div className="navbar-end">
             <button className="btn btn-ghost px-2"
-                onClick={onOpenModal}
+                onClick={openModal}
             >
                 <svg className='h-6 w-6' viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Add-Stroke</title> <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"> <g id="Add-Stroke"> <rect id="Rectangle" fillRule="nonzero" x="0" y="0" width="24" height="24"> </rect> <circle id="Oval" stroke="#0C0310" strokeWidth="2" strokeLinecap="round" cx="12" cy="12" r="9"> </circle> <line x1="12" y1="9" x2="12" y2="15" id="Path" stroke="#0C0310" strokeWidth="2" strokeLinecap="round"> </line> <line x1="9" y1="12" x2="15" y2="12" id="Path" stroke="#0C0310" strokeWidth="2" strokeLinecap="round"> </line> </g> </g> </g></svg>
                     Add Book
@@ -68,9 +66,9 @@ function NavBar() {
             </div>
         </div>
     </div>
-    <Modal isOpen={modalIsOpen} onClose={onCloseModal}>
+    <Modal isOpen={openAddModal} onClose={closeModal}>
         <h2 className="text-2xl mx-auto my-5 max-w-fit font-bold font-sans">Add New Book</h2>
-        <BookForm closeModal={onCloseModal}  />
+        <BookForm closeModal={closeModal}  />
     </Modal>
 
     </>

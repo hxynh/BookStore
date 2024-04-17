@@ -14,6 +14,4 @@ This project is created using Vite and is completed with the following:
 <img src="https://github.com/hxynh/BookStore/assets/47993347/eccfe25a-04bf-4c4d-9d4e-7a655d132d3a=250x250" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="50" height="50" >
 
-
-
-
+This project has also been deployed to Vercel. Please visit https://book-store-pearl-ten.vercel.app/ 

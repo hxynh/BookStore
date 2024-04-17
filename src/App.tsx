@@ -8,7 +8,7 @@ function App() {
   return (
     <div className='relative'>
       <NavBar />
-      <h1 className='text-3xl mx-auto my-5 max-w-fit font-bold font-sans'>Welcome, {name}!</h1>
+      <h1 className='text-3xl mx-auto my-5 max-w-fit font-semibold tracking-wide'>Welcome, {name}!</h1>
       <BookList />
     </div>
   )
