@@ -23,24 +23,34 @@ const booksSlice = createSlice({
     initialState,
     reducers: {
         addBook: (state, action: PayloadAction<Book>) => {
-            state.books.push(action.payload)
-            console.log("Payload: ", action.payload)
+            try {
+                state.books.push(action.payload)
+            } catch (error) {
+                console.log("Unable to upload...")
+            }
         },
         editBook: (state, action: PayloadAction<Book>) => {
-            const {id, name, category, price, img, description} = action.payload
-            const bookMatch = state.books.find(book => book.id === id)
-            
-            if(bookMatch) {
-                bookMatch.name = name,
-                bookMatch.category = category,
-                bookMatch.price = price,
-                bookMatch.img = img,
-                bookMatch.description = description
+            try {
+                const {id, name, category, price, img, description} = action.payload
+                const bookMatch = state.books.find(book => book.id === id)
+                
+                if(bookMatch) {
+                    bookMatch.name = name,
+                    bookMatch.category = category,
+                    bookMatch.price = price,
+                    bookMatch.img = img,
+                    bookMatch.description = description
+                }
+            } catch (error) {
+                console.log("Unable to edit...")
             }
         },
         deleteBook: (state, action:PayloadAction<string>) => {
-            state.books = state.books.filter(book =>
-                book.id !== action.payload)
+            try {
+                state.books = state.books.filter(book => book.id !== action.payload)
+            } catch (error) {
+                console.log("Unable to delete...")
+            } 
         }
     }
 })
