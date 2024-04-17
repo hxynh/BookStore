@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import booksList from "../assets/books.json";
+import { toast } from "react-toastify";
 
 export interface Book {
     id: string,
@@ -25,8 +26,9 @@ const booksSlice = createSlice({
         addBook: (state, action: PayloadAction<Book>) => {
             try {
                 state.books.push(action.payload)
+                toast.success("Yay! Book successfully Added!")
             } catch (error) {
-                console.log("Unable to upload...")
+                toast.error("Oops, unable to Add book! Please try again later")
             }
         },
         editBook: (state, action: PayloadAction<Book>) => {
@@ -41,15 +43,18 @@ const booksSlice = createSlice({
                     bookMatch.img = img,
                     bookMatch.description = description
                 }
+                toast.success("Yay! Book successfully Update!")
+
             } catch (error) {
-                console.log("Unable to edit...")
+                toast.error("Oops, unable to Update book! Please try again later")
             }
         },
         deleteBook: (state, action:PayloadAction<string>) => {
             try {
                 state.books = state.books.filter(book => book.id !== action.payload)
+                toast.success("Yay! Book successfully Deleted!")
             } catch (error) {
-                console.log("Unable to delete...")
+                toast.error("Oops, unable to Delete book! Please try again later")
             } 
         }
     }
