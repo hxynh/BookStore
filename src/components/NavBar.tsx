@@ -36,7 +36,7 @@ function NavBar() {
 
   return (
     <>
-        <div className="navbar bg-primary">
+        <div className="navbar bg-primary px-20">
         
         <div className="navbar-start">
             <a className="text-xl uppercase mx-2 ">book<strong className="text-2xl">s</strong>tore</a>
