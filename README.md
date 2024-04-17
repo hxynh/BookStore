@@ -1,30 +1,19 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Users can login by entering their name to view a personalized Welcome message and can logout to clear their name
+- Users can add new books by clicking on the 'Add Book' located at the top right corner of the Navigation Bar
+- Users can click on any books available on the screen to edit the details of any books
+- Users can also delete books by clicking on the trash can icon located on the top right corner of every book tile
+  
+This project is created using Vite and is completed with the following: 
 
-Currently, two official plugins are available:
+<img src="https://github.com/hxynh/BookStore/assets/47993347/595c1780-bcbd-4d80-a077-db2577df5a10" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/389cec76-f5c7-4a0d-b421-fa0c89dbb390" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/b5a4d8b4-b099-492d-99f5-dd8cd45dc14b=250x250" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/eccfe25a-04bf-4c4d-9d4e-7a655d132d3a=250x250" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="50" height="50" >
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
