@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../app/store";
-import { Book, addBook, editBook } from "../features/booksSlice";
+import { Book, addBook, editBook } from "../features/books/booksSlice";
 import { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
 
@@ -39,30 +39,30 @@ function BookForm({closeModal, book}: formProp) {
     }
   return (
     <form onSubmit={handleSubmit} className="mt-6">
-    <label className="input input-bordered flex items-center gap-2 mb-4">
-    *Name:
-        <input name="name" type="text" className="grow" placeholder="Name" required value={values.name} onChange={ handleEdit}/>
-    </label>
-    <label className="input input-bordered flex items-center gap-2 mb-4">
-    *Category:
-        <input name="category" type="text" className="grow" placeholder="Category" 
-        required value={values.category} onChange={ handleEdit}/>
-    </label>
-    <label className="input input-bordered flex items-center gap-2 mb-4">
-    *Price:
-        <input name="price" type="number" step="0.01" className="grow" placeholder="Price" required value={values.price || ""} onChange={ handleEdit}/>
-    </label>
-    <label className="input input-bordered flex items-center gap-2 mb-4">
-    Image:
-        <input name="img" type="text" className="grow" placeholder="Image URL" value={values.img} onChange={ handleEdit}/>
-    </label>
-    <label className="form-control">
-        Description:
-        <textarea name="description" className="textarea textarea-bordered h-24" placeholder="Description" value={values.description} onChange={handleEdit}/>
-    </label>
-    <p className="text-error">* Indicates required field</p>
-    <button className="btn mt-3 bg-primary float-end hover:bg-secondary">{!book ? 'add' : 'update'} book</button>
-</form>
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+        *Name:
+            <input name="name" type="text" className="grow" placeholder="Name" required value={values.name} onChange={ handleEdit}/>
+        </label>
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+        *Category:
+            <input name="category" type="text" className="grow" placeholder="Category" 
+            required value={values.category} onChange={ handleEdit}/>
+        </label>
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+        *Price:
+            <input name="price" type="number" step="0.01" className="grow" placeholder="Price" required value={values.price || ""} onChange={ handleEdit}/>
+        </label>
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+        Image:
+            <input name="img" type="text" className="grow" placeholder="Image URL" value={values.img} onChange={ handleEdit}/>
+        </label>
+        <label className="form-control">
+            Description:
+            <textarea name="description" className="textarea textarea-bordered h-24" placeholder="Description" value={values.description} onChange={handleEdit}/>
+        </label>
+        <p className="text-error">* Indicates required field</p>
+        <button className="btn mt-3 bg-primary float-end hover:bg-secondary">{!book ? 'add' : 'update'} book</button>
+    </form>
   )
 }
 

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "server": "nodemon backend/server.js",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -11,13 +12,23 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^8.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.1",
+    "react-router": "^6.22.3",
+    "react-router-dom": "^6.22.3",
     "react-toastify": "^10.0.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/uuid": "^9.0.8",
@@ -29,9 +40,16 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "nodemon": "^3.1.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "- Users can login by entering their name to view a personalized Welcome message and can logout to clear their name\r - Users can add new books by clicking on the 'Add Book' located at the top right corner of the Navigation Bar\r - Users can click on any books available on the screen to edit the details of any books\r - Users can also delete books by clicking on the trash can icon located on the top right corner of every book tile",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

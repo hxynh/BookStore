@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../app/store";
-import { Book, deleteBook } from "../features/booksSlice"
+import { Book, deleteBook } from "../features/books/booksSlice"
 import Modal from "../layout/Modal";
 import BookForm from "./BookForm";
 
@@ -8,6 +8,7 @@ type IBook = {
   book: Book;
 }
 function BookCard(props: IBook) {
+  console.log("In card, ", props.book.id)
   const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',

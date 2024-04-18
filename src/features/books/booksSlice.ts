@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import booksList from "../assets/books.json";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+//import booksList from "../../assets/books.json";
+import { booksService  } from "./booksService";
 import { toast } from "react-toastify";
 
 export interface Book {
@@ -12,12 +13,26 @@ export interface Book {
 }
 
 interface BookState {
-    books: Book[]
+    books: Book[],
+    loading: 'idle' | 'pending' | 'succeeded' | 'failed',
+    message: any
 }
 
 const initialState: BookState = {
-    books: booksList
+    books: [],
+    loading: 'idle',
+    message: ''
+    
 }
+
+export const getBooks = createAsyncThunk('books/getAll', async(_, thunkAPI) => {
+    try {
+        return await booksService.showBooks()
+    } catch (error: any) {
+        const message = (error.response && error.response.data && error.response.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 const booksSlice = createSlice({
     name: "books",
@@ -37,6 +52,7 @@ const booksSlice = createSlice({
                 const bookMatch = state.books.find(book => book.id === id)
                 
                 if(bookMatch) {
+                    bookMatch.id = id,
                     bookMatch.name = name,
                     bookMatch.category = category,
                     bookMatch.price = price,
@@ -57,6 +73,20 @@ const booksSlice = createSlice({
                 toast.error("Oops, unable to Delete book! Please try again later")
             } 
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getBooks.pending, (state) => {
+                state.loading = 'pending'
+            })
+            .addCase(getBooks.fulfilled, (state, action) => {
+                state.loading = 'succeeded';
+                state.books = action.payload
+            })
+            .addCase(getBooks.rejected, (state, action) => {
+                state.loading = 'failed';
+                state.message = action.payload
+            })
     }
 })
 

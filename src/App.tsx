@@ -1,16 +1,24 @@
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import { useAppSelector } from './app/store'
-import NavBar from './components/NavBar'
-import BookList from './layout/BookList'
+import Login from './pages/Login'
+import Home from './pages/Home'
+//import { useAppSelector } from './app/store'
 
 function App() {
-  const name = useAppSelector(state => state.user.name)
+  //const name = useAppSelector(state => state.user.users)
+  const router = createBrowserRouter([
+    {
+      path: '/login',
+      element: <Login />
+
+    },
+    {
+      path: "",
+      element: <Home />
+    }
+  ])
   return (
-    <div className='relative'>
-      <NavBar />
-      <h1 className='text-3xl mx-auto my-5 max-w-fit font-semibold tracking-wide'>Welcome, {name}!</h1>
-      <BookList />
-    </div>
+    <RouterProvider router={router} />
   )
 }
 
