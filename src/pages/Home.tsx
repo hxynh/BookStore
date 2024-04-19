@@ -1,14 +1,15 @@
 import BookList from '../layout/BookList'
 import NavBar from '../components/NavBar'
 import { useEffect } from 'react'
-import { useAppDispatch } from '../app/store'
-import { getBooks } from '../features/books/booksSlice';
+import { useAppDispatch, useAppSelector } from '../app/store'
+import { showBooks } from '../features/books/booksSlice';
 function Home() {
   const dispatch = useAppDispatch();
-
+  const books = useAppSelector(state => state.books)
+  
   useEffect(() => {
-    dispatch(getBooks())  
-  }, [])
+    dispatch(showBooks())  
+  }, [books, dispatch])
 
   return (
     <>

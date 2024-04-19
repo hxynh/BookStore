@@ -14,7 +14,7 @@ function BookList() {
         }
         {booksList.length > 0 && 
             booksList.map ( book => 
-                <BookCard key={book.id} book={book}/>
+                <BookCard key={book._id} book={book}/>
             )
         }
         

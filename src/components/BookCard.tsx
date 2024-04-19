@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../app/store";
-import { Book, deleteBook } from "../features/books/booksSlice"
+import { Book, removeBook } from "../features/books/booksSlice"
 import Modal from "../layout/Modal";
 import BookForm from "./BookForm";
 
@@ -8,7 +8,6 @@ type IBook = {
   book: Book;
 }
 function BookCard(props: IBook) {
-  console.log("In card, ", props.book.id)
   const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -25,7 +24,7 @@ function BookCard(props: IBook) {
   }
 
   const handleDelete = () => {
-    dispatch(deleteBook(props.book.id))
+    dispatch(removeBook(props.book._id))
   }
 
   return (

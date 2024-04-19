@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../app/store";
-import { Book, addBook, editBook } from "../features/books/booksSlice";
+import { Book, createBook, editBook } from "../features/books/booksSlice";
 import { useState } from "react";
-import {v4 as uuidv4} from 'uuid';
+//import {v4 as uuidv4} from 'uuid';
 
 type formProp = {
     closeModal: () => void,
@@ -10,7 +10,7 @@ type formProp = {
 
 function BookForm({closeModal, book}: formProp) {
     const dispatch = useAppDispatch();
-    const [values, setValues] = useState(book ? book : {id: "", name: "", category: "", price: 0, img:"", description: ""})
+    const [values, setValues] = useState(book ? book : {_id: "", name: "", category: "", price: 0, img:"", description: ""})
     
     const handleEdit =  (event : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setValues({...values,[event.target.name] : event.target.value});
@@ -25,15 +25,16 @@ function BookForm({closeModal, book}: formProp) {
             const formData = new FormData(event.currentTarget)
             const data = (Object.fromEntries(formData.entries()))
             const {name, category, price, img, description} = data
+            console.log("Form data: ", data);
             const book: Book = {
-                id: uuidv4(),
+                _id: '',
                 name: name.toString(),
                 category: category.toString(),
                 price: Number(price),
                 img: img.toString(),
                 description: description.toString()
             }
-            dispatch(addBook(book))
+            dispatch(createBook(book))
         }
         closeModal()
     }
