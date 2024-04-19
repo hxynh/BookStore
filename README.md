@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+##Note: 
+The Bookstore is set up with concurrently and can be accessed by running the command 'npm run dev'. To run server and client individually please use the command 'npm run server' for backend and 'npm run client' for frontend
+This project has been deployed to Vercel. Please visit https://book-store-pearl-ten.vercel.app/ 
+
 ## Features
 - Users can login by entering their name to view a personalized Welcome message and can logout to clear their name
 - Users can add new books by clicking on the 'Add Book' located at the top right corner of the Navigation Bar
@@ -14,4 +18,4 @@ This project is created using Vite and is completed with the following:
 <img src="https://github.com/hxynh/BookStore/assets/47993347/eccfe25a-04bf-4c4d-9d4e-7a655d132d3a=250x250" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="50" height="50" >
 
-This project has also been deployed to Vercel. Please visit https://book-store-pearl-ten.vercel.app/ 
+
