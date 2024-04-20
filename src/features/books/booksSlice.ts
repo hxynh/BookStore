@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-//import booksList from "../../assets/books.json";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { booksService  } from "./booksService";
 import { toast } from "react-toastify";
 
@@ -66,40 +65,6 @@ const booksSlice = createSlice({
     initialState,
     reducers: {
         reset: () => initialState
-        /*
-        addBook: (state, action: PayloadAction<Book>) => {
-            try {
-                state.books.push(action.payload)
-                toast.success("Yay! Book successfully Added!")
-            } catch (error) {
-                toast.error("Oops, unable to Add book! Please try again later")
-            }
-        },
-        editBook: (state, action: PayloadAction<Book>) => {
-            try {
-                const {_id, name, category, price, img, description} = action.payload
-                const bookMatch = state.books.find(book => book._id === _id)
-                if(bookMatch) {
-                    bookMatch.name = name,
-                    bookMatch.category = category,
-                    bookMatch.price = price,
-                    bookMatch.img = img,
-                    bookMatch.description = description
-                }
-                toast.success("Yay! Book successfully Update!")
-
-            } catch (error) {
-                toast.error("Oops, unable to Update book! Please try again later")
-            }
-        },
-        deleteBook: (state, action:PayloadAction<string>) => {
-            try {
-                state.books = state.books.filter(book => book._id !== action.payload)
-                toast.success("Yay! Book successfully Deleted!")
-            } catch (error) {
-                toast.error("Oops, unable to Delete book! Please try again later")
-            } 
-        }*/
     },
     extraReducers: (builder) => {
         builder
@@ -119,32 +84,40 @@ const booksSlice = createSlice({
             })
             .addCase(createBook.fulfilled, (state, action) => {
                 state.loading = 'succeeded';
-                state.books.push(action.payload)
+                state.books.push(action.payload);
+                toast.success("Yay! Book successfully Added!")
             })
             .addCase(createBook.rejected, (state, action) => {
                 state.loading = 'failed';
-                state.message = action.payload
+                state.message = action.payload;
+                toast.error("Oops, unable to Add book! Please try again later")
+
             })
             .addCase(editBook.pending, (state) => {
                 state.loading = 'pending'
             })
             .addCase(editBook.fulfilled, (state) => {
-                state.loading = 'succeeded';
+                state.loading = 'succeeded';                
+                toast.success("Yay! Book successfully Update!")
+
             })
             .addCase(editBook.rejected, (state, action) => {
                 state.loading = 'failed';
-                state.message = action.payload
+                state.message = action.payload;
+                toast.error("Oops, unable to Update book! Please try again later")
             })
             .addCase(removeBook.pending, (state) => {
                 state.loading = 'pending'
             })
             .addCase(removeBook.fulfilled, (state, action) => {
                 state.loading = 'succeeded';
-                state.books = state.books.filter(book => book._id !== action.payload)
+                state.books = state.books.filter(book => book._id !== action.payload);
+                toast.success("Yay! Book successfully Deleted!")
             })
             .addCase(removeBook.rejected, (state, action) => {
                 state.loading = 'failed';
-                state.message = action.payload
+                state.message = action.payload;
+                toast.error("Oops, unable to Delete book! Please try again later")
             })
     }
 })

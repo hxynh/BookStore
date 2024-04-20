@@ -1,18 +1,32 @@
 import {createSlice, PayloadAction } from "@reduxjs/toolkit"; 
+import userInfo from "../../assets/user.json";
 
-interface UserState {
+interface User {
     name: string,
     username: string,
-    password: string,
-    loggedIn: boolean
+    password: string    
 }
 
+interface UserState {
+    user: User,
+    isError: boolean,
+    isSuccess: boolean,
+    isLoading: boolean,
+    message: string
+}
+
+//const user: User = JSON.parse(localStorage.getItem('user') || '""') ;
 
 const initialState: UserState = {
-    name: "Nancy Hou",
-    username: "nhou",
-    password: "123456",
-    loggedIn: false
+    user: {
+        name: "",
+        username: "",
+        password: ""
+    },
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
+    message: '',
 }
 
 export type loginInfo = {
@@ -27,15 +41,15 @@ const userSlice = createSlice({
         
         login: (state, action: PayloadAction<loginInfo>) => {
             const {username, password} = action.payload
-            if(state.username === username && state.password === password) {
-                state.loggedIn = true
+            if(userInfo.username === username && userInfo.password === password) {
+                state.isSuccess = true
             } else {
-                state.loggedIn = false
+                state.isSuccess = false
             }
         },
         
         logout: (state) => { 
-            state.loggedIn = false;
+            state.isSuccess = false;
             
         }
     }

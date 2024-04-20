@@ -5,7 +5,7 @@ The Bookstore is set up with concurrently and can be accessed by running the com
 This project has been deployed to Vercel. Please visit https://book-store-pearl-ten.vercel.app/ 
 
 ## Features
-- Users can login by entering their name to view a personalized Welcome message and can logout to clear their name
+
 - Users can add new books by clicking on the 'Add Book' located at the top right corner of the Navigation Bar
 - Users can click on any books available on the screen to edit the details of any books
 - Users can also delete books by clicking on the trash can icon located on the top right corner of every book tile
