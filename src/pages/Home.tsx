@@ -9,12 +9,12 @@ function Home() {
   const books = useAppSelector(state => state.books)
   const user = useAppSelector(state => state.user.user)
   const isSuccess = useAppSelector (state => state.user.isSuccess)
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isSuccess) {
-      navigate('/login')    
-    }
+    // if(!isSuccess) {
+    //   navigate('/login')    
+    // }
     dispatch(showBooks())  
   }, [books, isSuccess, dispatch])
 
@@ -22,7 +22,7 @@ function Home() {
   return (
     <>
         <NavBar />
-        <h1 className='text-3xl mx-auto my-5 max-w-fit font-semibold tracking-wide'>Welcome, {user.username}!</h1>
+        <h1 className='text-3xl mx-auto my-5 max-w-fit font-semibold tracking-wide'>Welcome, Nancy!</h1>
         <BookList />
     </>
   )

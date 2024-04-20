@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/store";  
 import { login, loginInfo } from "../features/user/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function LoginForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const isSuccess = useAppSelector((state) => state.user.isSuccess)
-
+    
     useEffect(() => {
         if(isSuccess){
             navigate('/')
@@ -42,6 +42,7 @@ function LoginForm() {
             <input type="password" name="password" className="grow text-sm" placeholder="Enter your password" />
         </label>
         <button type="submit" className="btn mt-3 bg-primary hover:bg-secondary">Login</button>
+        <Link to="/register" className="mx-4 hover:text-blue-400">or signup here </Link>
     </form>
     </div>
   )
