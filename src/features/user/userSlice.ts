@@ -1,5 +1,4 @@
-import {createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"; 
-//import userInfo from "../../assets/user.json";
+import {createSlice, createAsyncThunk } from "@reduxjs/toolkit"; 
 import userService from "./userService";
 
 export interface User {
