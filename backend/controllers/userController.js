@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import asyncHandler from "express-async-handler";
-import User from "../model/userModel.js"
+import {userModel as User} from "../model/userModel.js"
 
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '30d'})
@@ -9,7 +9,7 @@ const generateToken = (id) => {
 
 const registerUser = asyncHandler(async (req, res) => {
     const {name, username, password} = req.body
-    
+    console.log("body: ", req.body)
     if(!name || !username || !password) {
         res.status(400)
         throw new Error ('Please enter all required fields to proceed')
@@ -45,8 +45,8 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 const loginUser = asyncHandler(async(req, res) => {
-    const {email, password} = req.body
-    const user = await User.findOne({email})
+    const {username, password} = req.body
+    const user = await User.findOne({username})
 
     if(user && (await bcrypt.compare(password, user.password))) {
         res.json({

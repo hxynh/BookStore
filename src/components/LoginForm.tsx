@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/store";  
-import { login, loginInfo } from "../features/user/userSlice";
+import { loginInfo, login } from "../features/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-
 
 function LoginForm() {
     const dispatch = useAppDispatch();
@@ -19,7 +18,7 @@ function LoginForm() {
         event.preventDefault();
         const fd = new FormData(event.currentTarget);
         const data = Object.fromEntries(fd.entries());
-        const userData: loginInfo ={
+        const userData: loginInfo = {
             username: data.username.toString(),
             password: data.password.toString()
         }

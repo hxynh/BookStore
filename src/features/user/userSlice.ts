@@ -1,32 +1,11 @@
-import {createSlice, PayloadAction } from "@reduxjs/toolkit"; 
-import userInfo from "../../assets/user.json";
+import {createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"; 
+//import userInfo from "../../assets/user.json";
+import userService from "./userService";
 
-interface User {
+export interface User {
     name: string,
     username: string,
     password: string    
-}
-
-interface UserState {
-    user: User,
-    isError: boolean,
-    isSuccess: boolean,
-    isLoading: boolean,
-    message: string
-}
-
-//const user: User = JSON.parse(localStorage.getItem('user') || '""') ;
-
-const initialState: UserState = {
-    user: {
-        name: "",
-        username: "",
-        password: ""
-    },
-    isError: false,
-    isSuccess: false,
-    isLoading: false,
-    message: '',
 }
 
 export type loginInfo = {
@@ -34,26 +13,106 @@ export type loginInfo = {
     password: string
 }
 
+interface UserState {
+    user: User | null,
+    isError: boolean,
+    isSuccess: boolean,
+    isLoading: boolean,
+    message: any
+}
+
+const user: User = JSON.parse(localStorage.getItem('user') || '""') ;
+
+const initialState: UserState = {
+    user: user || null,
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
+    message: '',
+}
+
+//Register user
+export const register = createAsyncThunk('user/register', async(user: User, thunkAPI) => {
+    try {
+        return await userService.register(user)
+    } catch (error: any) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+})
+
+//Login user
+export const login = createAsyncThunk('user/login', async(user: loginInfo, thunkAPI) => {
+    try {
+        return await userService.login(user)
+    } catch (error: any) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+})
+
+//Logout user
+export const logout = createAsyncThunk('user/logout', async() => {
+    return await userService.logout();
+})
+
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        
-        login: (state, action: PayloadAction<loginInfo>) => {
-            const {username, password} = action.payload
-            if(userInfo.username === username && userInfo.password === password) {
-                state.isSuccess = true
-            } else {
-                state.isSuccess = false
-            }
-        },
-        
-        logout: (state) => { 
-            state.isSuccess = false;
-            
+        reset: (state) => {
+            state.isLoading = false
+            state.isError = false
+            state.isSuccess = false
+            state.message = ''
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(register.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(register.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+            })
+            .addCase(register.rejected, (state, action) => {
+                state.isLoading = state.isSuccess = false;
+                state.isError = true;
+                state.user = null;
+                state.message = action.payload
+            })
+            .addCase(login.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+            })
+            .addCase(login.rejected, (state, action) => {
+                state.isLoading = state.isSuccess = false;
+                state.isError = true;
+                state.user = null;
+                state.message = action.payload
+            })
+            .addCase(logout.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.user = null;
+            })
+            .addCase(logout.rejected, (state, action) => {
+                state.isLoading = state.isSuccess = false;
+                state.isError = true;
+                state.user = null;
+                state.message = action.payload
+            })
     }
 })
 
-export const {login, logout} = userSlice.actions;
+export const { reset} = userSlice.actions;
 export default userSlice.reducer;

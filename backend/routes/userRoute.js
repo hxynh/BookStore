@@ -3,7 +3,7 @@ import { registerUser, loginUser, getUser } from "../controllers/userController.
 import { protect } from "../middleware/authMiddleware.js"
 const router = express.Router()
 
-router.get('/user', protect, getUser)
+router.get('/', protect, getUser)
 router.post('/login', loginUser)
 router.post('/register', registerUser)
 
