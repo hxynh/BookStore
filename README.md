@@ -2,10 +2,12 @@
 
 ##Note: 
 The Bookstore is set up with concurrently and can be accessed by running the command 'npm run dev'. To run server and client individually please use the command 'npm run server' for backend and 'npm run client' for frontend
+You're welcome to register as a new user or sign in with an existing username as 'nhou' and password as '123456' (without quotes)
+
 This project has been deployed to Vercel. Please visit https://book-store-pearl-ten.vercel.app/ 
 
 ## Features
-
+- Users can register as a new user or sign in as an existing user
 - Users can add new books by clicking on the 'Add Book' located at the top right corner of the Navigation Bar
 - Users can click on any books available on the screen to edit the details of any books
 - Users can also delete books by clicking on the trash can icon located on the top right corner of every book tile
