@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User, loginInfo } from "./userSlice";
 
-const API_URL = "http://localhost:8000/user";
+const API_URL = "https://book-store-backend-rho.vercel.app/user";
 
 //Register user
 const register = async (userData: User) => {
