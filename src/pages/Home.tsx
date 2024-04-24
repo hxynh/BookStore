@@ -2,23 +2,28 @@ import BookList from '../layout/BookList'
 import NavBar from '../components/NavBar'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../app/store'
-import { showBooks } from '../features/books/booksSlice';
+import { reset, showBooks } from '../features/books/booksSlice';
 import { useNavigate } from 'react-router';
 function Home() {
   const dispatch = useAppDispatch();
-  const books = useAppSelector(state => state.books)
-  const user = useAppSelector(state => state.user.user)
-  const isSuccess = useAppSelector (state => state.user.isSuccess)
-  const navigate = useNavigate();
 
-  useEffect(() => {
-     if(!isSuccess) {
-       navigate('/login')    
-    }
-    dispatch(showBooks())  
-  }, [books, isSuccess, dispatch])
+  const {isError, isSuccess, message} = useAppSelector(state => state.user)
+    const {user } = useAppSelector(state => state.user)
+    const navigate = useNavigate()
 
-  
+    useEffect(() => {
+        if(isError) {
+            console.log("Please sign in to view books")
+        }
+        if(!user){
+            navigate('/login')
+            dispatch(reset())
+        }
+        if(isSuccess){
+          dispatch(showBooks())
+        }
+    }, [user, navigate, isError, message, dispatch])
+    
   return (
     <>
         <NavBar />

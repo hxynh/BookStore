@@ -13,13 +13,17 @@ export interface Book {
 
 interface BookState {
     books: Book[],
-    loading: 'idle' | 'pending' | 'succeeded' | 'failed',
+    isError: boolean,
+    isSuccess: boolean,
+    isLoading: boolean,
     message: any
 }
 
 const initialState: BookState = {
     books: [],
-    loading: 'idle',
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
     message: ''
     
 }
@@ -64,58 +68,74 @@ const booksSlice = createSlice({
     name: "books",
     initialState,
     reducers: {
-        reset: () => initialState
+        reset: (state) => {
+            state.isLoading = false
+            state.isError = false
+            state.isSuccess = false
+            state.message = ''
+        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(showBooks.pending, (state) => {
-                state.loading = 'pending'
+                state.isLoading = true
             })
             .addCase(showBooks.fulfilled, (state, action) => {
-                state.loading = 'succeeded';
+                state.isLoading = false;
+                state.isSuccess = true;
                 state.books = action.payload
             })
             .addCase(showBooks.rejected, (state, action) => {
-                state.loading = 'failed';
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.isError = true;
                 state.message = action.payload
             })
             .addCase(createBook.pending, (state) => {
-                state.loading = 'pending'
+                state.isLoading = true
             })
             .addCase(createBook.fulfilled, (state, action) => {
-                state.loading = 'succeeded';
+                state.isLoading = false;
+                state.isSuccess = true;
                 state.books.push(action.payload);
                 toast.success("Yay! Book successfully Added!")
             })
             .addCase(createBook.rejected, (state, action) => {
-                state.loading = 'failed';
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.isError = true;
                 state.message = action.payload;
                 toast.error("Oops, unable to Add book! Please try again later")
 
             })
             .addCase(editBook.pending, (state) => {
-                state.loading = 'pending'
+                state.isLoading = true
             })
             .addCase(editBook.fulfilled, (state) => {
-                state.loading = 'succeeded';                
+                state.isLoading = false;
+                state.isSuccess = true;              
                 toast.success("Yay! Book successfully Update!")
 
             })
             .addCase(editBook.rejected, (state, action) => {
-                state.loading = 'failed';
-                state.message = action.payload;
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.isError = true;                state.message = action.payload;
                 toast.error("Oops, unable to Update book! Please try again later")
             })
             .addCase(removeBook.pending, (state) => {
-                state.loading = 'pending'
+                state.isLoading = true
             })
             .addCase(removeBook.fulfilled, (state, action) => {
-                state.loading = 'succeeded';
+                state.isLoading = false;
+                state.isSuccess = true;
                 state.books = state.books.filter(book => book._id !== action.payload);
                 toast.success("Yay! Book successfully Deleted!")
             })
             .addCase(removeBook.rejected, (state, action) => {
-                state.loading = 'failed';
+                state.isLoading = false;
+                state.isSuccess = false;
+                state.isError = true;
                 state.message = action.payload;
                 toast.error("Oops, unable to Delete book! Please try again later")
             })
