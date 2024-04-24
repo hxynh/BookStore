@@ -19,5 +19,10 @@ This project is created using Vite and is completed with the following:
 <img src="https://github.com/hxynh/BookStore/assets/47993347/b5a4d8b4-b099-492d-99f5-dd8cd45dc14b=250x250" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/eccfe25a-04bf-4c4d-9d4e-7a655d132d3a=250x250" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="50" height="50" >
+<img src="https://ajeetchaulagain.com/static/7cb4af597964b0911fe71cb2f8148d64/87351/express-js.png" width="50" height="50" >
+<img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png" width="50" height="50" >
+<img src="https://www.svgrepo.com/show/331488/mongodb.svg" width="50" height="50" >
+<img src="https://user-images.githubusercontent.com/8939680/57233884-20344080-6fe5-11e9-8df3-0df1282e1574.png" width="50" height="50" >
+
 
 
