@@ -1,14 +1,11 @@
 import BookCard from "../components/BookCard"
 import { useAppDispatch, useAppSelector } from "../app/store"
 import { useEffect } from "react"
-import { toast } from "react-toastify"
 import { useNavigate } from "react-router"
 import { showBooks } from "../features/books/booksSlice"
-import Spinner from "../components/Spinner"
-
 
 function BookList() {
-    const {books, isLoading} = useAppSelector((state) => state.books)
+    const {books} = useAppSelector((state) => state.books)
     const {isError, isSuccess, message, user} = useAppSelector(state => state.user)
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
