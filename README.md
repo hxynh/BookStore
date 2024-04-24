@@ -17,6 +17,11 @@ This project is created using Vite and is completed with the following:
 <img src="https://github.com/hxynh/BookStore/assets/47993347/595c1780-bcbd-4d80-a077-db2577df5a10" alt="reactjs" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/389cec76-f5c7-4a0d-b421-fa0c89dbb390" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/b5a4d8b4-b099-492d-99f5-dd8cd45dc14b=250x250" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/97f381be-a5e1-4ee1-8fc0-b5629169d125" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/3b4fd5f4-764a-4b1c-9ce0-b1cd271bbdf2" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/4a43a5d3-62f3-4ace-abec-195c85733a5b" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/7886e696-c228-451b-935d-bfbce27abdb7" width="50" height="50" >
+<img src="https://github.com/hxynh/BookStore/assets/47993347/f0155041-7ada-4586-bc29-ba928e487a1c" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/eccfe25a-04bf-4c4d-9d4e-7a655d132d3a=250x250" width="50" height="50" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="50" height="50" >
 
