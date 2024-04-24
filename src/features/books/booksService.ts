@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Book } from "./booksSlice";
 
-const API_URL = "https://book-store-backend-rho.vercel.app/";
+const API_URL = "http://localhost:8000/";
 
 const getBooks = async () => {
     const response = await axios.get(API_URL)
