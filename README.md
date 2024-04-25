@@ -25,7 +25,9 @@ This project is created using Vite and is completed with the following:
 <img src="https://github.com/hxynh/BookStore/assets/47993347/eccfe25a-04bf-4c4d-9d4e-7a655d132d3a=250x250" width="100" height="100" >
 <img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="100" height="100" >
 
-
-
+## Upcoming updates:
+- Users will not be signed out of their session upon refresh. They will only be signed out when logout button is clicked or after a set period of time
+- Users will only be able to view the books that they added
+- The login page UI will be updated
 
 
