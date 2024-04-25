@@ -2,23 +2,25 @@ import { useNavigate } from "react-router"
 import { useAppDispatch, useAppSelector } from "../app/store";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { reset } from "../features/books/booksSlice";
+import { reset as bookReset } from "../features/books/booksSlice";
+import {reset as userReset } from "../features/user/userSlice";
 import { register } from "../features/user/userSlice";
 import { Link } from "react-router-dom";
 
 function RegisterForm() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const {user, isSuccess, isError, message} = useAppSelector(state => state.user)
+    const {user, isSuccess, isError} = useAppSelector(state => state.user)
 
     useEffect(() => {
         if(isError) {
-            toast.error(message)
+            toast.error("Username already exists. Please try registering with a different username")
+            dispatch(userReset())
         }
         if(isSuccess || user) {
             navigate('/')
         }
-        dispatch(reset())
+        dispatch(bookReset())
     }, [user, isSuccess, isError, navigate, dispatch])
 
     
