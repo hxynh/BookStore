@@ -51,7 +51,7 @@ function BookForm({closeModal, book}: formProp) {
         </label>
         <label className="input input-bordered flex items-center gap-2 mb-4">
         *Price:
-            <input name="price" type="number" step="0.01" className="grow" placeholder="Price" required value={values.price || ""} onChange={ handleEdit}/>
+            <input name="price" type="number" step="0.01" className="grow" placeholder="Price" min={0} required value={values.price || ""} onChange={ handleEdit}/>
         </label>
         <label className="input input-bordered flex items-center gap-2 mb-4">
         Image:
