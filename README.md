@@ -11,6 +11,7 @@ This project has been deployed to Vercel. Please visit https://book-store-pearl-
 - Users can add new books by clicking on the 'Add Book' located at the top right corner of the Navigation Bar
 - Users can click on any books available on the screen to edit the details of any books
 - Users can also delete books by clicking on the trash can icon located on the top right corner of every book tile
+- Users will not be signed out of their session upon refresh. They will only be signed out when logout button is clicked or after a set period of time
   
 This project is created using Vite and is completed with the following: 
 
@@ -26,7 +27,6 @@ This project is created using Vite and is completed with the following:
 <img src="https://github.com/hxynh/BookStore/assets/47993347/9a091ba7-fb07-4b2c-aa8f-a156b287413c" width="100" height="100" >
 
 ## Upcoming updates:
-- Users will not be signed out of their session upon refresh. They will only be signed out when logout button is clicked or after a set period of time
 - Users will only be able to view the books that they added
 - The login page UI will be updated
 
